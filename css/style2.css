@@ -22,11 +22,13 @@ body{
 #rosa {
     width: 100px;
     height: auto;
-    transition: width 1s ease;
+    transition: width 1s ease; 
+    transform: 1s ease;
 }
 
 #rosa.rosa-grande {
     width: 400px;
+    transform: translateY(-135px);
 }
 
 .icona-casuale {

@@ -2,6 +2,7 @@ let bottone = document.getElementById("premio");
 
 let sequenza = [1, 2, 3, 2, 1, 4, 5, 4, 1, 2, 3, 2, 1, 4, 5, 4, 1];
 let posizione = 0;
+let finito = false;
 
 bottone.onclick = function() {
     bottone.style.display = "none";
@@ -13,46 +14,53 @@ bottone.onclick = function() {
     document.body.appendChild(immagine);
 
     immagine.onclick = function() {
+
+        if (finito) {
+            return;
+        }
+
         posizione++;
 
         if (posizione < sequenza.length) {
             immagine.src = "../img/regalo" + sequenza[posizione] + ".png";
-        }  else {         // La sequenza è finita
-                let rosa = document.createElement("img");
-                rosa.src = "../img/rosa.png";
-                rosa.id = "rosa";
+        } else {
+            finito = true;
 
-                document.body.appendChild(rosa);
+            let rosa = document.createElement("img");
+            rosa.src = "../img/rosa.png";
+            rosa.id = "rosa";
 
-                setTimeout(function() {
-                    rosa.classList.add("rosa-grande");
-                }, 100);
+            document.body.appendChild(rosa);
 
-                for (let i = 0; i < 7; i++) {
-                    let immagine = document.createElement("img");
+            setTimeout(function() {
+                rosa.classList.add("rosa-grande");
+            }, 100);
 
-                    immagine.src = "../img/animazione.png";
-                    immagine.classList.add("icona-casuale");
+            for (let i = 0; i < 10; i++) {
+                let immagine = document.createElement("img");
 
-                    let x, y;
+                immagine.src = "../img/animazione.png";
+                immagine.classList.add("icona-casuale");
 
-                    do {
-                        x = Math.random() * 90;
-                        y = Math.random() * 90;
-                    } while (
-                        x > 25 && x < 75 &&
-                        y > 30 && y < 70
-                    );
+                let x, y;
 
-                    immagine.style.left = x + "vw";
-                    immagine.style.top = y + "vh";
+                do {
+                    x = Math.random() * 90;
+                    y = Math.random() * 90;
+                } while (
+                    x > 25 && x < 75 &&
+                    y > 30 && y < 70
+                );
 
-                    // Durata casuale dell'animazione
-                    immagine.style.animationDuration =
-                        (2 + Math.random() * 3) + "s";
+                immagine.style.left = x + "vw";
+                immagine.style.top = y + "vh";
 
-                    document.body.appendChild(immagine);
-                }
-            };
-    }
+                immagine.style.animationDuration =
+                    (2 + Math.random() * 3) + "s";
+
+                document.body.appendChild(immagine);
+            }
+        }
+    };
 };
+
