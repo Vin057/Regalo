@@ -1,0 +1,59 @@
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: pink;
+    overflow: hidden;
+}
+
+#indovina{
+    font-size: 50px;
+    text-align: center;
+}
+
+#vite{
+    font-size: 25px;
+}
+
+#bottone{
+    width: 75px;
+    height: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.bottone-continua {
+    width: 200px;
+    height: 35px;
+    margin-top: 20px;
+}
+
+.risultato{
+    margin-top: 20px;
+    font-size: 40px;
+    width: auto;
+}
+
+.icona-casuale {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    z-index: -1;
+    animation: fluttua 3s ease-in-out infinite;
+}
+
+@keyframes fluttua {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(10px, -15px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
